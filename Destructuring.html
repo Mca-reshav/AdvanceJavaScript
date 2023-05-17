@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>destructuring of array and objects</title>
+</head>
+<body>
+    <script>
+        //1. Destructuring of array
+        //old
+        let user=["Shyam",25,"Delhi","MCA"];
+        let name=user[0];
+        let age=user[1];
+        let city=user[2];
+        let course=user[3];
+        console.log(user)
+        console.log(age);
+        console.log(`name: ${name} age:${age+20}`)//it will overwrite
+
+        //new
+        let info=["Ram",75,"Mumbai","MCA"];
+        let[names,marks,loc,program]=info;
+        console.log(info)
+
+        //nested array
+        let detail=["Ram",2,"Kolkata",["male",25000]];
+        let[init,exp,place,[gender,salary]]=detail;
+        console.log(detail);
+        console.log(detail[3]);
+        console.log(salary*2);
+
+        //rest operator
+        let stud=["Ramesh",55,60,70,85];
+        let[s_name,...s_marks]=stud;
+        console.log(s_name);
+        console.log(...s_marks);
+
+        //function
+        users=([fname,age=20,city])=>{
+            console.log(`${fname} ${age+2} ${city}`);
+        }
+        users(["Ram",25,"Delhi"]);//age will get overwrite
+
+        //function
+        infos=()=>{
+            return ["Ram",25,"Delhi"]
+        }
+        let[iname,iage,icity]=infos();
+        console.log(infos());
+        console.log(icity);
+
+
+
+        //destructuring of object
+
+        //use of alias
+
+        let emp={
+            ename:"Ram",
+            eage:25,
+            esalary:25000
+        };
+        let{ename:en,eage:ea,esalary:es}=emp;
+        console.log(en+" "+ea+" "+es)
+
+    </script>
+</body>
+</html>

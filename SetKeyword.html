@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //set: to use only unique value
+        let myArr = [2, 42, 66, 32, 42, 23];
+        let obj = new Set(myArr);
+        console.log(obj.size);
+        obj.add(91);
+        obj.add(77);
+        console.log(obj)
+        obj.delete(32);
+        console.log(obj)
+
+        //to remove duplicate elements present in an array
+
+        function removeDuplicates(arr) {
+            const uniqueArr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (!uniqueArr.includes(arr[i])) {
+                    uniqueArr.push(arr[i]);
+                }
+            }
+            return uniqueArr;
+        }
+        console.log(removeDuplicates([2,5,2,6,8,6,6,8,9,2,4]))
+       
+
+    </script>
+</body>
+
+</html>

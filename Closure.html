@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Closure in JavaScript is a form of lexical scoping used to preserve variables from the outer scope of a function in the inner scope of a function. Lexical scoping is the process used to define the scope of a variable by its position in the source code
+
+        // a function with lexical scope is called as closures
+
+        function outer(){
+            
+           return function test(){
+                let a=100;
+                return function inner(){
+                    return a;
+                }
+            }
+        }
+        let test=outer();
+        let inner=test();
+
+        console.log(inner());
+        console.dir(inner) // closure remember the value of a whne we are return a function but not in case when we are using directly
+        //console.log(a)
+    </script>
+</body>
+</html>

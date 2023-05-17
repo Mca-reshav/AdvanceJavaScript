@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //generator vs iterator
+
+        function* simpleGenerator() {
+
+        }
+        function* simpleGenerator() {
+            let x=100;
+            yield "first"
+
+            yield x
+
+            let y="200"
+            yield y
+
+            console.log("message")
+        }
+        let sg=simpleGenerator();
+        console.log(sg.next());
+        console.log(sg.next());
+        console.log(sg.next());
+        console.log(sg.next());
+
+        //generator: you can control the flow of execution of the block of codes by using next() key word and put values as yield inside the function of genrator and call into a variable first then call it using next() passing it as argument, here you cannot skip any value unlike iterator can 
+
+        //if there is no yield in generator function then its output will be done:true
+        
+        //generator function perform better than normal one as gen fn load into the memory and as per our click it will throw the o/p instead of load the entire one
+
+        //iterator
+        let data=[20,30,10,50,25,90,55];
+        let iter=data[Symbol.iterator]();
+        let res= iter.next();
+        res=iter.next();   //here we skip the value
+        res=iter.next();
+         while(!res.done){
+            console.log(res.value);
+            res=iter.next();
+            //if(data[data.length-1]==res.value){
+            //    break;
+            //}
+         }
+    </script>
+</body>
+
+</html>

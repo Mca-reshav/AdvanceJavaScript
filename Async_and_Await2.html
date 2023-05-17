@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async&Await2 JS</title>
+</head>
+<body>
+    <script>
+        
+        //1. fetch data from stored file
+
+        async function test(){
+            console.log("2: Message");
+            const response=await fetch("Student_Data.json");    //it will return a promise
+            console.log("3: Message");
+            const PromiseReturn =await response.json();
+            return PromiseReturn;
+        }
+        console.log("1: Message");
+        let a=test();
+        console.log("4: Message");
+        console.log(a);
+
+        //2. use of then and catch
+
+        async function demo(){
+            const a =await fetch("Student_Data.json");
+            const x= await a.json();
+            return x;
+        }
+        demo().then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+           // console.log("Error appeared");
+            console.log(err);
+        })
+        
+        //3. short trick
+
+        async function hello(){
+            return (await fetch("Student_Data.json")).json();
+        }
+        hello().then((result)=>{
+            console.log(result)
+        }).catch((error)=>{
+            console.log(error);
+        })
+
+        //4. Error Handling: it is needed when we want to use multiple catch function
+
+        async function abc(){
+            try{
+                return (await fetch("Student_Data.json")).json();
+            }catch(error){
+                console.log(error);
+            }
+        }
+        abc().then((data)=>{
+            console.log(data);
+        });
+    </script>
+</body>
+</html>

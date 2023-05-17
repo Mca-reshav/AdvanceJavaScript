@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Calculator(){
+            let data=0;
+            this.add=function(val){
+                data=data+val;
+                return this
+            }
+            this.sub=function(val){
+                data=data-val;
+                return this
+            }
+            this.mul=function(val){
+                data=data*val;
+                return this
+            }
+            this.div=function(val){
+                data=data/val;
+                return this
+            }
+            this.print=function(){
+                return data;
+            }
+        }
+        let call=new Calculator();
+        console.warn(call.add(20).sub(10).mul(10).div(2).print());
+    </script>
+</body>
+</html>

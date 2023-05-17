@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise All JS</title>
+</head>
+<body>
+    <script>
+        /*
+        Promise.all()
+
+        promise1                      promise2                     promise3
+
+                                     promise.all
+
+                            resolve()               reject()
+                    If all promises resolve         If any promise reject
+
+                            then()                  catch()      
+        */
+
+        /*
+        Syntax:
+
+        let p1= new promise(function(resolve,reject){
+            console.log("first promise");
+            resolve("first");
+        });
+        let p2= new promise(function(resolve,reject){
+            console.log("second promise");
+            resolve("second")
+        });
+        let p3= new promise(function(resolve,reject){
+            console.log("third promise");
+            resolve("third")
+        });
+        promise.all([p1,p2,p3]).then().catch();
+        
+        */
+
+        let p1=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("first promise has resolved");
+                resolve(10);
+            },2*1000);
+        })
+        let p2=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("second promise has resolved");
+                resolve(20);
+            },3*1000);
+        });
+        let p3=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("third promise has resolved");
+                resolve(30);
+            },4*1000);
+        });
+
+        var total=0;
+        Promise.all([p1,p2,p3]).then((result)=>{
+            for(var i in result){
+                total+=result[i];
+            }
+            console.log(`Given Data: ${result}`);
+            console.log(`Total: ${total}`);
+        }).catch((error)=>{
+            console.log(`Error: ${error}`);
+        });
+        
+
+        //short trick
+        
+        let prom=function(returnData, message){
+            return function(resolve,reject){
+                setTimeout(()=>{
+                    console.log(`This ${message} promise has resolved`);
+                    return(returnData);
+                },returnData*100);
+            }
+        };
+        let P1= new Promise(prom(10,"first"));
+        let P2= new Promise(prom(20,"second"));
+        let P3= new Promise(prom(30,"third"));
+        let P4= new Promise(function(resolve,reject){
+            reject("4th is rejected");
+        });
+        var sum=0;
+        Promise.all([P1,P2,P3,P4]).then((result)=>{
+            for(var k in result){
+                sum+=result[k];
+                console.log(`Result: ${result}`);
+                console.log(`Total: ${sum}`);
+            }
+        }).catch((error)=>{
+            console.log(`Error: ${error}`);
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP</title>
+</head>
+<body>
+    <script>
+
+        //OOP: object oriented programming: coding methodology- it gives concept of class and object
+        /*Adv: code more modular and reusable
+               well organised code
+               easier to debug/rectify the errors
+               best for med-large website 
+        */
+
+        /*class: property: let a,b,c;
+               : methods i.e., function sum(){
+                                    c=a+b;
+                                    return c;
+                                }
+        */
+
+        //example
+
+        class hello{
+            message(){
+                console.log("hello message");
+            }
+            sorry(){
+                console.log("sorry message");
+            }
+        }
+        let a=new hello();  // "a" is an object
+        a.message();
+        a.sorry();
+
+
+        /*
+        method: 
+
+        1.constructor: call automatically, use for initial purpose only
+
+        2.prototype: invoked when it is called, used to perform operation
+
+        3. static: no need to create an object to call it 
+        
+        */
+
+       
+        // 1. constructor method:
+
+        class student{
+            constructor(){
+                console.log("constructor: Hello");
+            }
+        }
+        let b=new student;
+
+
+        // 2. prototype method
+
+        class students{
+            constructor(name,age){
+                this.sname=name;
+                this.sage=age;
+                console.log("constructor method");
+            }
+            hello(){
+                document.write(`Hello ${this.sname} your age is ${this.sage+2}<br>`);
+            }
+            static sorry(){
+                console.log("static method");
+            }
+        }
+        let c=new students ("Ram",25);
+        let d=new students("Shyam",23);
+
+        c.hello();
+        d.hello();
+        //c.sorry();
+        students.sorry();
+    </script>
+</body>
+</html>

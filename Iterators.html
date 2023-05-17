@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterators JS</title>
+</head>
+<body>
+    <script>
+        /*
+        There are various methods to print values in js
+          Loops: while loop
+                 do while loop
+                 for loop
+                 for in() loop
+                 for of() loop
+                 for each() loop
+                 map()
+        Whenever we put values in loop then we donot have control on it, for this we should use iterators
+        */
+
+        var x=["apple","orange","grapes","banana","pineapple"];
+        for (var i=0;i<x.length;i++){   //return in text format 
+            console.log(x[i]);
+        }
+
+        for(let k of x){
+            console.log([k]);   //return in array format
+        }
+        x.forEach((value,index)=>{
+            console.log(`${index}: ${value}`)
+        })
+
+
+        //new
+        //           0   1   2   3
+        let number=[100,200,300,400];
+        let iter= number[Symbol.iterator]();
+        iter.next();    //0: skipped
+        iter.next();    //1: skipped
+        console.log(iter.next());   //2: printed with value and done
+        console.log("hello");
+        console.log(iter.next().value); //3: printed only value
+        console.log(iter.next().done);
+        // done will false if there is left element in an array
+
+
+        //iterators with while loop
+
+        let num=[100,200,300,400,500];
+        let it=num[Symbol.iterator]();
+        let result= it.next();
+
+        while(!result.done){            //condition
+            console.log(result.value);
+            result=it.next();          //inc or dec
+        }
+
+        // iterators with string
+
+        let str="Reshav"
+        let itera=str[Symbol.iterator]();
+        let res= itera.next();
+        res=itera.next();   //here we skip the letter
+        res=itera.next();
+         while(!res.done){
+            console.log(res.value);
+            res=itera.next();
+         }
+
+
+         // iterator with for loop
+
+         let string=["Hello"];
+         for(let char of string){
+            console.log(char);
+         }
+
+         //user defined iterator
+
+         function numIter(arr){
+            var nextNum=0;
+            return{
+                next(){
+                    if(nextNum<arr.length){
+                        return{
+                            value:arr[nextNum++],
+                            done:false
+                        }
+                    }else{
+                        return{
+                            done:true
+                        }
+                    }
+                }
+            }
+         }
+         let numbers=[100,200,300,400,500];
+         let nums=numIter(numbers);
+         console.log(nums.next());
+         console.log(nums.next());
+
+</script>
+</body>
+</html>

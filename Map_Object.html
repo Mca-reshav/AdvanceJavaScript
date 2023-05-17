@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Map: It is similar to object but little bit advance from object
+            Map key can be amy data type(Object can have only string datatype)
+            Map has more features which donot have in object: makes it easy to use
+            and better performance than object
+
+            e.g: to find the length in object for that we have to run a loop
+             but in case of map we can just use map.size()
+
+        */
+
+        let obj = {
+            name: "peter",
+            20: "number key in obj",
+            true: "boolean key in obj"
+        }
+        //in object you cannot access key value other than string like: number or boolean but i can be done in map
+        let data = new Map([
+            ['name', 'bruce'],
+            [10, 'number key in map'],
+            [true, 'boolean key in map']
+        ])
+
+        console.log(obj)
+        console.log(data)
+
+        // console.warn(obj.10); you cannot access it 
+        console.log(obj.true);  // you can access it but it is not a boolean but it is a string, check the color of the text
+        console.log(data.get(10));
+        console.log(data.get(true))
+        console.log(data.keys())
+        console.log(data.values())
+        //to find keys in object
+        for (var key in obj) {
+            console.log(key + " " + obj[key])
+        }
+
+
+        obj.city = "Delhi"
+        data.set('city', 'Mumbai')
+
+        console.log(obj)
+        console.log(data)
+
+        console.log(data.has('city'))
+
+        // tofind particular key
+        const myMap = new Map([
+            [1, 'one'],
+            [2, 'two'],
+            [3, 'three']
+        ]);
+
+        const value = myMap.get(2);
+        console.log(value); // Output: "two"
+
+        const keys = [...myMap.keys()][1];
+        console.log(keys); // Output: 2
+
+        const values = [...myMap.values()][1];
+        console.log(values); // Output: "two"
+
+        //delete
+       // data.delete(true)
+
+        //forEach()
+        data.forEach((value,index)=>{
+            console.log(index+ " : "+value);
+        })
+
+        //forof loop
+        for(x of data){
+            //console.log(x)
+            console.log(x[0]+" | "+x[1])
+        }
+        for([x,y] of data){
+            console.log(x+"/"+y)
+        }
+    </script>
+</body>
+
+</html>

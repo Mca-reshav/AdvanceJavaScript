@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest operator in adv js</title>
+</head>
+<body>
+    <script>
+        //previously: for sum of multiple arguments makes crumbsome
+        function sum (num1,num2){
+           return num1+num2
+        }
+        console.log(sum(20,30));
+
+        //or
+
+        function add(num1,num2){
+            console.log(num1+num2);
+        }
+        add(20,30);
+        add(20,30,40);//this will not get computed, for this we should use arguments, that will convert it into objects and then perform operation using forin loop
+
+
+        function addition(num1,num2){
+            let addition=0;
+            for(let i in arguments){
+                addition=addition+arguments[i];
+            }
+            console.log(addition);
+        }
+        addition(20,30);
+        addition(20,30,40);
+        //but it cannot able to handle values other than number like string for this we should use Rest operator
+        //sum("Ram",20,30,40);
+
+        //Rest operator: in this it will put the string values in an object and rest into another one to form array
+
+        function sumation(name,...args){
+            let sumation=0;
+            for(let i in args){
+                sumation+=args[i];
+            }
+            console.log(sumation);
+            console.log(name);
+        }
+        sumation("Ram",20,30,40,50);
+
+
+        //Example 
+
+        function plus(name,course,...args){
+            console.log(arguments);
+            document.write(`Hello ${name} of ${course}: `);
+            let plus=0;
+            for(let i in args){
+                plus+=args[i];
+            }
+            document.write("<b>"+plus+"</b>"+" is your total marks");
+        }
+        plus("Ram","MCA",11,22,33,44,55);
+
+    </script>
+</body>
+</html>

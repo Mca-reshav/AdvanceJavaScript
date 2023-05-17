@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let student1 = {
+            fname: "Sam",
+            city: "London",
+            printDetail: function () {
+                console.log(this.fname+" from "+this.city);
+            }
+        }
+        let student2 = {
+            fname: "Peter",
+            city: "Paris",
+            /*
+            printDetail: function () {
+                console.log(this);
+            }
+            */
+        }
+        //function borrowing
+        student1.printDetail();
+        student1.printDetail.call(student2)
+        
+
+
+        //Apply: Pass argument in form of an array list
+
+        let teacher1={
+            name:"Joseph",
+            subject:"Maths",
+        }
+        let teacher2={
+            name:"Michel",
+            subject:"Physics",
+        }
+        let teacher3={
+            name:"Kevin",
+            subject:"Chemistry",
+        }
+        let showDetails=function(course,sem){
+            console.log(this.name+" teaches "+this.subject+" to "+course+sem)
+        }
+        showDetails.call(teacher1,"BCA"," Sem 2");
+        showDetails.apply(teacher2,["BSc"," Sem 3"])
+
+        //Bind: not to use it directly, put it into a variable and then call it
+
+        let bindData=showDetails.bind(teacher3,"BSc"," Sem 2");
+        bindData();
+
+    </script>
+</body>
+
+</html>

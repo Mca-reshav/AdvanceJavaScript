@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance in adv js</title>
+</head>
+<body>
+    <script>
+        //inheritence: to inherit the properties of parent by the child
+        //type: multi-level and multiple inheritance
+        //inheritance consist of two type of class: base class i.e., parent class and derived class i.e., child class
+         
+        class student{
+            constructor(name){
+                console.log("Constructor: Student "+name);
+            }
+        }
+        class monitor extends student{
+            constructor(name){
+                super();// to target the parent 
+                console.log("Constructor: Monitor "+name)
+            }
+        }
+        let bb=new student("Ramesh");
+        let a=new monitor("Ram");
+        
+
+        //prototype:
+
+        class employee{
+            constructor(name){
+                this.empname=name;
+                console.log("Constructor: Employee")
+            }
+            info(){
+                console.log("Employee Name: "+this.empname);
+            }
+
+        }
+        class manager extends employee{
+            info(){
+                super.info(); //comment this line to see the difference
+                console.log("Manager Name: "+ this.empname);
+            }
+        }
+        let b=new manager("Reshav");
+        b.info();
+
+
+        //multi-level inheritance
+
+        class employees{
+            constructor(name,age,salary){
+                this.ename=name;
+                this.eage=age;
+                this.esalary=salary;
+                console.log("Constructor: Employee ");
+            }
+            info(){
+                document.write(`<h3>Employee class</h3>
+                                Name: ${this.ename}<br>
+                                Age: ${this.eage}<br>
+                                Salary:${this.esalary}`)
+            }
+        }
+        class managers extends employees{
+            info(){
+                let ta=1500;
+                let hra=5000;
+                let da=12000;
+                let totalsalary=this.esalary+ta+hra+da;
+                document.write(`<h3>Manager class</h3>
+                                Name: ${this.ename}<br>
+                                Age: ${this.eage}<br>
+                                Salary:${totalsalary}`)
+                document.write(totalsalary)
+            }
+        }
+        class test extends managers{
+
+        }
+        let x=new test("Ram",25,25000);
+        let y=new employees("Shyam",23,25000);
+
+        x.info();
+        y.info();
+    </script>
+</body>
+</html>

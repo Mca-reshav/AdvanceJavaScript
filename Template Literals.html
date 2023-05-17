@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Literals in Adv js</title>
+</head>
+<body>
+    <script>
+        //previously:  
+        var a="hello";
+        var b= a+"world";
+        console.log(b);
+
+        //now:
+        var a="hello";
+        var b=`${a}world`;
+        console.log(b);
+
+
+        //example 1
+        let user="Reshav";
+        document.write("hello"+" "+user+" "+"welcome"+"<br>");
+        document.write(`hello ${user} welcome <br><br>`);
+
+
+        //example2
+        let fname="Ram";
+        let lname="kumar";
+        function fullname(fname,lname){
+            return `${fname} ${lname}`;
+        }
+        let c=`hello ${fname} ${lname}<br>`;
+        let f=`hello ${fullname(fname,lname)}`;
+        document.write(c);
+        document.write(f);
+    </script>
+</body>
+</html>

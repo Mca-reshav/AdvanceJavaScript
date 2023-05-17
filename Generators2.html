@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generators2 JS</title>
+</head>
+<body>
+    <script>
+      // new way to use yield
+      
+      function *gen(){
+        let result=(yield)*10;
+        console.log(`Result: ${result}`);
+      }
+      let g=gen();
+      g.next();
+      g.next(100);
+
+      //array with generators
+      function *gene(){
+        let arr=[yield,yield,...yield];
+        console.log(`Result: ${arr}`);
+        console.log(arr[0]);
+      }
+      let h=gene();
+      h.next();
+      h.next("PHP");
+      h.next(..."Python");
+      h.next("Node.JS")
+
+
+      function *generator(){
+        yield 100;
+        yield['node','angular','react'];
+      }
+      let i=generator();
+      console.log(i.next().value);
+      console.log(i.next().value);
+
+
+      //spread operator
+      function *generators(){
+        yield 'php';
+        yield 'node';
+        yield 'python';
+      }
+      let j=generators();
+      console.log(j.next().value);
+      console.log([...j]);
+
+
+      //return 
+      function *Generators(){
+        yield 'hp';
+        yield 'lenovo';
+        yield 'asus';
+        yield 'dell';
+
+      }
+      let k=Generators();
+      console.log(k.next().value);
+      console.log(k.return('Ending Now'));
+    </script>
+</body>
+</html>

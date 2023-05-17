@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1,.div2,.div3{
+            position: relative;
+            top:20px;
+            left:20px;
+            height:100px;
+            width:100px;
+            border-radius: 3px;
+        }
+        .div1{
+            background-color: red;
+        }
+        .div2{
+            background-color: green;
+        }
+        .div3{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="elem" class="parent-div">
+        <div contenteditable class="div1">Div1</div>
+        <div class="div2">Div2</div>
+        <div class="div3">Div3</div>
+        <button onclick="deleteDiv()">Delete</button>
+    </div>
+    <script>
+        //  div*3.div$ emmet
+        //mutation observer
+        let observer= new MutationObserver((data)=>{
+            console.log(data)
+        })
+        observer.observe(elem,{
+            childList:true
+        })
+        function deleteDiv(){
+            document.getElementById('elem').children[0].remove();
+        }
+    </script>
+</body>
+</html>

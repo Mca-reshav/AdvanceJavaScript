@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object literals in adv js</title>
+</head>
+<body>
+    <script>
+        //old
+        let name="helloworld";
+        let obj={
+            name:name
+        };
+        console.log(obj)
+        //when assign value is equal to the property value we use object literals like
+
+        //new
+        
+        let obj1={
+            name
+        };
+        console.log(obj1)
+
+
+        let names="Ram kumar"
+        let course="MCA"
+        var obj2={
+            //new:
+            names,course    
+            //old: name:names,course:course
+        };
+        console.log(obj2)
+
+
+        //example2: object literals, use variable as a property name
+
+        let x="name";
+        let obj3={
+            [x]:"Ram"
+        }
+        console.log(obj3)
+
+
+        let n="student";
+        var obj4={
+            [n+"name"]:"Reshav",
+            course:"MCA",
+            age:24,
+            detail: function(){
+                return `${this.studentname} is a student of ${this.course} having age ${this.age}`
+            }
+        };
+        console.log(obj4);
+        console.log(obj4.detail());
+
+
+        //3. Object literals: new fucntion syntax
+
+        //old
+        let obj5={
+            name:"Ram kumar",
+            show:function(){
+                return`hello: ${this.name}`
+            }
+        };
+        console.log(obj5.show());
+
+        //new
+        let obj6={
+            name:"Ram kumar",
+            show(){
+                return`hello: ${this.name}`
+            }
+        };
+        console.log(obj6.show());
+
+        //example
+
+        let a="student";
+        var obj7={
+            [a+"name"]:"Reshav",
+            course:"MCA",
+            'detail show'(){
+                return`${this.studentname} is a student of ${this.course}`
+            }
+        };
+        console.log(obj7);
+        console.log(obj7['detail show']());
+
+
+        //function return as an object
+
+        let fname="Reshav";
+        let lname="Gupta";
+        let program="MCA";
+        student=(fname,lname,program)=>{
+            let fullname=fname+" "+lname;
+            return{fullname,program}
+        }
+        let s=student(fname,lname,program);
+        document.write(s.fullname+"<br>"+program);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async&Await JS</title>
+</head>
+<body>
+    <script>
+        /*
+        Async: It is not comes with ES6 but later on ES 2017, it is much more easier than promise as there is not need to write resolve and reject.
+
+        Syntax:
+
+        async function test(){
+            ----
+        }
+        */
+
+        async function test(){
+            return "hello";
+        }
+        console.log(test());
+
+        //Async : then and catch , but no need to write resolve/reject
+
+        let Test= async function(){
+            return "Hello";
+        }
+        Test().then((result)=>{
+            console.log(result);
+        }).catch((error)=>{
+            console.log(error);
+        });
+
+        //Await method: work inside async function
+
+        async function demo(){
+            console.log("1: Message");
+            //console.log("2: Message");     
+             await console.log("2: Message");
+            console.log("3: Message");
+        }
+        demo();
+        console.log("4: Message");
+        console.log("5: Message");
+
+        // await: it is mainly used in time of fetching data from server. when we assign something to do from fetching data, it will take time, in duration of that time other function will get executed to enhance the efficiency and at the end it will back again to the await
+
+
+        
+    </script>
+</body>
+</html>

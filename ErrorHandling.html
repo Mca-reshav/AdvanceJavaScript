@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling JS</title>
+</head>
+<body>
+    <script>
+        /*syntax:
+        try{
+
+        }catch{
+
+        }
+        */
+       try{
+            console.log("start");
+           // hello;        comment/umcomment this line to see the effect
+            console.log("end");
+       }catch{
+            console.log('error');
+       }
+
+       // to see the error in particular line
+
+       try{
+            console.log("start");
+            hello;        //comment/umcomment this line to see the effect
+            console.log("end");
+       }catch(error){
+             console.log(error);
+       }
+
+       // error handling works asynchronously
+
+       try{
+           setTimeout(()=>{
+            hello;
+           },2000)  //here catch block cannot recognise the error inside the setTimeout function 
+       }catch(err){
+            console.log(err);
+       }
+
+       //For use error handling with setTimeout function we have to write the try catch block inside the setTimeout function
+
+       setTimeout(()=>{
+        try{
+            helloworld;
+            namasteworld;
+        }catch(error){
+            console.log(error)
+        }
+       },3000)
+
+       // show error message separately 
+       try{
+        //helloworld;
+        namasteworld;
+       }catch(errors){
+        console.log(errors.name);
+        console.log(errors.message);
+        console.log(errors.stack);
+       }
+    </script>
+</body>
+</html>

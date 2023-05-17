@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Nullish Coalescing operator: this operator is used to determine the value is undefined or null, by putting the left the operator a condition and on the right side it will show the else condition to return undefined or null
+        
+        let user={
+            student:{
+                name:"peter",
+                age:25
+            }
+        }
+        console.log(user.student.name);
+        console.log(user.student.age)
+
+        // if we remove name and age 
+
+        let user1={
+            student:{
+                name:0,
+                //name:"",
+                age:25
+            }
+        }
+        console.log(user1.student.name || "empty");
+        console.log(user1.student.age)
+
+        //here you can see that if the value of name is empty or zero both of the time it show empty message
+
+        //it can be handled by using nullish coalescing ??
+
+        let user2={
+            student:{
+                name:'',
+                age:0
+            }
+        }
+        console.log(user2.student.name ?? "unknown");
+        console.log(user2.student.age ?? 21)
+        
+        let a=null;
+        let b;
+        console.log(a+" "+b)
+    </script>
+</body>
+</html>

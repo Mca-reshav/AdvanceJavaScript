@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbols JS</title>
+</head>
+<body>
+    <script>
+        /*Datatypes in JS: String
+                           Number
+                           Boolean
+                           Array
+                           Object
+                           Null & Undefined
+                        [+]Symbol: unique value 
+        
+        */
+
+        var x=Symbol("hello");
+        var y=Symbol("hello");
+        console.log(x===y); 
+
+        //to see the difference try it without Symbol
+
+        let a= Symbol("hello");
+        let b=Symbol("hello");
+        console.log(a==b);  //it will return: False
+        let m="hello";
+        let n="hello";
+        console.log(m==n);  //it will return: True
+
+        //value of symbol cannot be used directly in document
+        
+        let c= Symbol("hello");
+        console.log(c);
+        //alert(c);       // it will return an error
+        alert(c.toString());
+        alert(c.description);
+
+
+        //Symbol in object
+
+        let age=Symbol("age");
+        let user={
+            name:"Ram",
+            class:"MCA",
+           [age]:25
+        };
+        //user[age]=25      replacement of line no 49
+        console.log(user);
+        console.log(user.name);
+        console.log(user.age);      // it will show undefined
+        console.log(user[age]);     // this is the correct way to use
+        
+        
+        // for in loop with symbol
+
+        let ages=Symbol("ages");
+        let student={
+            name:"Shyam",
+            course:"MCA"
+        };
+        student[ages]=23;
+        student["gender"]="Male";
+        
+        for(let key in student){
+            console.log(student[key]);  // it will skip the symbol
+        }
+        
+
+        //JSON with symbol
+
+        let score=Symbol("score");
+        let stud={
+            name:"Reshav",
+            course:"Mca",
+            [score]:80,
+            gender:"Male"
+        }
+        console.log(stud);
+        console.log(JSON.stringify(stud)); // you see the difference 
+        console.log(score.description);// always use description or string with symbol to use with object or json
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //BigInt: It is second numeric datatype in javascript that provides a way to represent whole numbers larger than 2^53-1
+        
+        let a=1000000000000;
+        let b=100000000000000;
+        console.log(typeof a)
+        console.log(a)  // here you can see a clear result
+        console.log(a*b)    // but in this case you see that the result is not getting in proper numeric format, so it can be handled using bigint
+        
+        let c=102021314071928470174190129140124091091249;
+        console.log(c)
+        let d=102021314071928470174190129140124091091249n;  // n indicates bigint
+        console.log(d)
+        console.log(typeof d)
+
+        let e=BigInt(100)
+        console.log(typeof e)
+
+        let x=100n;
+        let y=100;
+        console.log(x==y)// true
+        console.log(x===y)// false
+
+
+        //let z=10.25n; it will throw an error saying that bigint must be used with integer
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread operator in adv js</title>
+</head>
+<body>
+    <script>
+        //Spread operator
+        function sum(name,...args){     //function is decalared: rest
+        }
+        sum("hello",20,30);//it will work
+        let arr=[20,30,40];
+        sum("hello",arr);// this will not possible to add element of an array
+
+        // for this we should use spread operator so it can pass values of elements separately to perform operation
+
+        sum("hello",...arr);    // function is called: spread
+
+
+        //example
+
+        function add(name,...args){
+            console.log(arguments);
+            document.write(`Hello ${name}: `);
+            let add=0;
+            for(let i in args){
+                add+=args[i];
+            }
+            document.write(add);
+        }
+        var ary=[10,20,30,40];
+        add("Ram",...ary);
+        console.log(ary);   //it returns in array 
+        console.log(...ary);    //it returns in separate element
+
+        //spread operator use in array
+        var arr1=[10,20,30,40];
+        var arr2=[...arr1];//arr1   to see the difference
+        arr1.push(50);
+        console.log(arr1);
+        console.log(arr2);
+
+        //spread operator used to concate two array
+        var ary1=[10,20,30,40];
+        var ary2=[11,22,33,44];
+        var ary3=ary1+ary2
+        console.log(ary1.concat(ary2));
+        console.log([...ary1,...ary2])//it doesnot need to use concate method 
+        console.log([5,...ary1,...ary2,ary3,6])
+
+        //spread operator is used in objects
+        var obj1={
+            name:"hello",
+            course:"abc"
+        };
+        var obj2={
+            age:20,
+            course:"xyz"    //it will override the course value of obj1
+        };
+        var obj3={
+            ...obj1,...obj2
+        }
+        console.log(obj3);
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*const getProducts = async () => {
+            let result = await fetch("https://api.npoint.io/20c1afef1661881ddc9c/playerList")
+            result = await result.json();
+            let data = { ...result }
+            for (var key in data) {
+                document.write("<br>" )
+                for (var keys in data[key]) {
+                    document.write(keys + ": " + data[key][keys]+ " | ")
+                }
+                document.write("<br>" )
+            }
+        }
+        getProducts();*/
+
+        ///tabular format
+
+        const getProducts = async () => {
+            let result = await fetch("https://api.npoint.io/20c1afef1661881ddc9c/playerList")
+            result = await result.json();
+            let data = { ...result }
+            document.write("<table border='2px' cell-spacing='15px'>")
+                document.write("<tr>" )
+                for (var key in data[0]) {
+                    document.write("<td bgcolor='lightgrey'>"+key+":</td>")
+                }
+                document.write("</tr>" )
+            
+            for (var key in data) {
+                document.write("<tr>" )
+                for (var keys in data[key]) {
+                    //document.write("<td bgcolor='lightgrey'>"+keys+":</td>")
+                    document.write("<td>"+ data[key][keys]+ "</td>")
+                }
+                document.write("</tr>" )
+            }
+            document.write("</table>")
+        }
+        getProducts();
+    </script>
+</body>
+
+</html>

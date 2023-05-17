@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //protypes: prototypes are the mechanism by which javascript objects inherit features from one another
+
+        let print={
+            fullname:function(){
+                return this.fname+" "+this.lname
+            },
+            getAge:function(){
+                let age=new Date().getFullYear() - this.birth;
+                return age
+            }
+        }
+
+        let student={
+            fname:"peter",
+            lname:"parker",
+            birth:2000,
+        }
+        let teacher={
+            fname:"kevin",
+            lname:"alen",
+            birth:1975,
+            getAge:print.getAge, //method: 2  to use prototype
+            getFullname:print.fullname
+            
+        }
+
+        student.__proto__=print //method: 1  to use prototype
+        //teacher.__proto__=print
+
+        console.log(student.fullname()+" "+student.getAge())
+        console.log(teacher.getFullname()+" "+teacher.getAge())
+
+        //whenever you directly call the function like: method:2 it will load all of the data at that time and makes the response slower,but in case of method:2 where we have used the proto then it load only when weare caling it unless it will stay unloaded.
+    </script>
+</body>
+</html>

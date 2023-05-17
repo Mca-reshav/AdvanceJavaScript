@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+      let data1=new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log("data1")
+            resolve(2)
+        },2000)
+      })
+      let data2=new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log("data2")
+            resolve(3)
+        },3000)
+      })
+      let data3=new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log("data3")
+            resolve(4)
+        },4000)
+      })
+
+       Promise.allSettled([data1,data2,data3]).then((data)=>{
+        console.log(data+"done")
+      }).catch((err)=>{
+        console.log("error:"+err)
+      }).finally((success)=>{
+        console.log("Finally is called")
+      })
+      
+       
+    </script>
+</body>
+
+</html>

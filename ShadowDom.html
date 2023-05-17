@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sampletext{
+            color:red
+        }
+    </style>
+    <style>
+        .sampletext{
+            color:green
+        }
+    </style>
+</head>
+<body>
+    <p class="sampletext">This is a sample text</p>
+
+    <input type="range" name="" id="">
+    <script>
+        //Shadow DOM:  it is a hidden dom inside our actual dom whenever we load the page, it doesnot get affected by the design or styling done at actual dom 
+
+        //it is needed when we are working with multiple css library or even our own written css then a problem arises that classes of css may get matched with similar one and it will impact the styling by overwriting 
+
+        // it allows you to hide some css part to get effected with another css styling
+        
+        // in the above example you can see that the original color get overwritten by the newer one
+
+        //to check shadow dom we have used a range input, as we see on the output we will find that the styling of range input is already done like color, shadow, without describing it 
+
+        // visit: browser setting >> preference>> elements >> show user agent shadow dom>> check it then go to elements section 
+    </script>
+</body>
+</html>

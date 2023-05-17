@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Hoisting: JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code
+
+        //In JavaScript, hoisting allows you to use functions and variables before they're declared
+        function one(){
+            var a=10;
+            function two(){
+                console.log(a)
+            }
+            return two();
+        }
+        show()
+        one()
+
+
+        function show(){
+            console.log("show is called")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX JS</title>
+</head>
+<body>
+    <p id="demo">Here We Load Data</p>
+    <button onClick="loadData()">Click</button>
+    <script>
+       /*
+       AJAX: (Asynchronous JavaScript and XML)
+
+        AJAX is a technique for creating fast and dynamic web pages. It only refresh the particular component of the webpage without loading the entire page. 
+        
+        XMLHttpRequest          Request         Server
+                            --------------->       
+         //                   <---------------
+                                Response
+        //Response type:  textfile
+          //              xml data
+            //            JSON data (JavaScript Object Notation)
+
+        //5 steps:    0: request not initialized
+          //          1: server connection is establish
+            //        2: request received
+              //      3: processing request
+                //    4: request finished and response is ready
+        
+        Response: Status + Response(text/xml/json)
+
+        //            status: 200: "OK"-> server responds as aspected 
+          //                  403: "Forbidden"-> server is not responding
+            //                404: "Not Found"-> file not available in server
+              //              ---etc
+                    
+        Syntax:
+
+        var a=new XMLHttpRequest();
+        a.onreadystatechange=()=>{
+            if(this.readystate==4 && this.status==200){
+                document.getElementById("demo").innerHTML=this.response.text;
+            }
+        };
+        a.open("GET","filename.txt",true);
+        a.send();
+
+            //-Method: GET and POST, POST is used when sensitive data  is passing, mainly in hidden information
+
+            //-may you use filepath of PHP, Python, .NET
+
+            //-Async Mode: not get effected with response of server it will continue its work further
+
+        
+
+
+        function loadData(){
+            var xhttp= new XMLHttpRequest();
+            xhttp.onreadystatechange=function(){
+                if(this.readystate==4 && this.status==200){
+                    document.getElementById("demo").innerHTMl=this.responseText;
+                }if(this.readystate==4 && this.status==404){
+                    document.getElementById("demo").innerHTML="FILE NOT FOUND";
+                };
+            };
+            xhttp.open("GET","readme.txt",true);//also use json placeholder
+            xhttp.send();
+        }
+
+        //console--> network --> xhr --> XMLHttpRequest
+
+        //AJAX is mainly used for JSON data, xmlhttprequest is not a new feature of ES6 but the newest one is fetch. AJAX is mainly comes with jQuery.
+    </script>
+</body>
+</html>

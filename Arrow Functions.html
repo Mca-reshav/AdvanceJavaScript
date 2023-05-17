@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow function in adv js</title>
+</head>
+<body>
+    <script>
+        
+        //previously 
+        function hello(){
+            console.log("hello");
+        }
+        hello();
+
+        let hell=function(){
+            console.log("hello");
+        }
+        hell();
+
+
+        //now
+        let helo=()=> console.log("hello");
+        helo();
+        // for multiple line we use curly braces
+
+        
+        // example
+
+
+        let welcome =(name)=>{  //let welcome=function(name)
+            return `hello ${name}`;
+        }
+        console.log(welcome("ram"));
+
+        //you can further make compact code for line only
+        let welcom=name=>`welcom ${name}`;
+        console.log(welcom("ramesh"))
+        console.log(typeof welcom)
+    </script>
+</body>
+</html>

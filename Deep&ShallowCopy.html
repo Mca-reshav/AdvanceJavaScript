@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script>
+        //deep copy and shallow copy
+
+        //shallow copy: it will target only the first level of elements of the object not the inner or child element present inside an object inside an object
+
+        //deep copy: it will go a level deeper than the shallow copy as to copy the element at inner object of an outer object
+
+        // lodash npm library: to overcome the demerit of deep copy
+
+
+
+        let obj={
+            name:"peter"
+        }
+        let user=obj
+        user.name="bruce"
+        console.log(obj)
+
+        //whenever we copy an object then its data is not get copied but reference is copied : copy by reference that is memory location, it is not valid with variable 
+
+        //we can avoid to data not get changed in the original object when a copy of it get stored into an object , for this we use to copy methods that is : shallow copy and deep copy
+
+        let obj1={
+            name:"peter",
+        }
+        let user1=Object.assign({},obj1)
+        user1.name="bruce"
+        console.log("obj1:",obj1)
+        console.log("user:",user1)
+        //Method 1: By using object.assign it will avoid the original data not get affected: shallow copy 
+
+
+        //method 2: destructuring
+
+        let obj2={
+            name:"tony"
+        }
+        let user2={...obj2};
+        user2.name="stark"
+        console.log(obj2)
+
+        //here if use an object inside an object, then problem will remain same as before
+
+        let obj3={
+            name:"henry",
+            address:{
+                city:"broocklyn",
+                country:"US"
+            }
+        }
+        //let user3={...obj3}
+        //let user3=Object.assign({},obj3)
+        //user3.address.city="texas"
+        //user3.name="kevin"
+        //console.log(obj3)
+
+        //here it is clearly seen that the city is replaced with the new object even we have used shallow copy as destructured manner/Object.assign
+
+        //to resolve this problem we will use deep copy 
+
+        let user4=JSON.parse(JSON.stringify(obj3))
+        user4.address.city="Houstan"
+        console.log(obj3)
+        console.log(user4)
+
+        //but deep copy also have disadvantage as when we use a function or date inside an object then it will not get reflected into the copied object
+
+        let obj4={
+            name:"joseph",
+            address:{
+                city:"Wellington",
+                state:"NZ"
+            },
+            displayDetails:function(){
+                return "all data is here"
+            }
+        }
+        let user5=JSON.parse(JSON.stringify(obj4))
+        console.log("obj is called:",obj4);
+        console.log("user is called:",user5)
+
+        //here function will not get appeared in the copied object
+
+        // lodash npm package or use cdn of js to resolve 
+
+        let obj5={
+            name:"jacky",
+            address:{
+                city:"auckland",
+                state:"NZ"
+            },
+            displayDetails:function(){
+                return "all data is here"
+            }
+        }
+        let user6=_.cloneDeep(obj5)
+        user6.address.city="Canterbury"
+
+        console.log("obj5 is called:",obj5)
+        console.log("user6 is called:",user6)
+    </script>
+</body>
+</html>

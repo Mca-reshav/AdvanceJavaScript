@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling2 JS</title>
+</head>
+<body>
+    <script>
+        /*
+        Different types of error in js: evalError: appear when we do some calculation mistake
+                                        rangeError: --0-- bad,avg,good
+                                        referenceError: calling a function i.e., not defined
+                                        syntaxError: when we do syntactical mistake
+                                        typeError: Datatype mistake
+                                        URLError: wrong way to give url
+                                        AggregateError:promise.all
+        */
+       try{
+        blahblah;
+       }catch(error){
+        if(error instanceof ReferenceError){
+            console.log("It is a Reference Error")
+        }else if(error instanceof TypeError){
+            console.log("It is a Type Error")
+        }else{
+            console.log("Unknown Error")
+        }
+       }
+
+       //try/catch is mainly used when we fetch data in JSON format from a server
+
+       try{
+        let json='{"name":"Reshav","age":25}';
+        let user=JSON.parse(json);
+        console.log(user);
+        console.log(user.age);
+       }catch(error){
+        console.log(error)
+       }
+
+       /* parse <---------------   JSON   ----------------> stringify
+          //  |                                               |
+         // it converts JSON in object  | it converts object into JSON
+       
+
+    </script>
+</body>
+</html>

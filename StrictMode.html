@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict Mode JS</title>
+</head>
+<body>
+    <script>
+        //Strict mode: to rectify syntax error when browser doesnot recognise it properly
+
+        a=10;
+        console.log(a); //it will run without any error but it contains syntax error, so we should use strict mode to rectify the error
+        
+        //syntax:
+       // "use strict"    <-- strict message <-- browser to recognise error
+        x=10;
+        console.log(x);
+
+
+        
+         "use strict";    
+         function sum(a,b,b){
+            console.log(a+b+b);
+         }
+         sum(10,20,30);
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generators JS</title>
+</head>
+<body>
+    <script>
+        // advanced version of iterators comes in ES6
+
+        /*previously
+
+         function tests(){
+            console.log("first");
+            console.log("second");
+            console.log("third");
+        }
+        tests(); //here it will print on which sequence we have passed the values, so we do not have any control on the flow of the sequence, for this we should use generators.
+
+        //generator function is used to control the statement
+
+        /*syntax:
+
+        function *test(){
+            yield "first";  //to pause
+            yield "second";
+            yield " third";
+        }
+        let g= test();  //call
+        g.next();   //first
+        g.next();
+        */
+
+        function *generator(){
+                console.log("first message");
+                yield "yield no.1";
+                console.log("second message");
+                yield "yield no.2";
+                console.log("third message");
+                yield "yield no.3";
+        }
+        let g= generator();
+        console.log(g.next());
+        console.log(g.next());
+        //console.log(g.next());
+        //console.log(g.next());
+        
+
+
+        /*for of loop
+
+        function *gene(){
+                console.log("first message");
+                yield "yield no.1";
+                console.log("second message");
+                yield "yield no.2";
+        }
+        let h=gene();
+        for(let i of h){
+            console.log([i]);
+        }
+
+
+        // unlimited yield
+        function *gen(){
+            let nextNum=100;
+            while(true){
+                yield(nextNum++);
+            }
+        }
+        let k=gen();
+       for(let key of k){
+            if(key>=111) break;
+            console.log(key);
+        }*/
+    </script>
+</body>
+</html>

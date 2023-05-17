@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Generator function</h2>
+        <h3>New Dynamic Id: <span id="newId"></span></h3>
+        <button onclick="getId()">Generate Id</button>
+    </div>
+    <script> 
+        function* simpleGenerator(){
+            let name=prompt("Enter your name")
+            let getName=[...name];
+            let firstChar=getName[0];
+           // var customChar=name.charCodeAt(2);
+            // var customChar=name.charAt(2);
+            let UprFC=firstChar.toUpperCase();
+            let i=100;
+            while(true){
+                let data=Math.ceil((Math.random()*100000)+i)
+                i++;
+                //yield i
+                let date=new Date();
+                let getDate=date.getFullYear()
+                yield getDate+"G"+data+'F'+UprFC
+            }
+        }
+        let sg=simpleGenerator();
+        function getId(){
+            document.getElementById('newId').innerText=sg.next().value
+        }
+    </script>
+</body>
+</html>
