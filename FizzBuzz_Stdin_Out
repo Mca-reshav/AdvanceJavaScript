@@ -1,0 +1,26 @@
+// Read input from stdin
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.on('line', (input) => {
+  const n = parseInt(input.trim(), 10);
+  fizzBuzz(n);
+});
+
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      process.stdout.write("FizzBuzz\n");
+    } else if (i % 3 === 0) {
+      process.stdout.write("Fizz\n");
+    } else if (i % 5 === 0) {
+      process.stdout.write("Buzz\n");
+    } else {
+      process.stdout.write(i + "\n");
+    }
+  }
+}
+
