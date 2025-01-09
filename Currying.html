@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Currying</title>
+  </head>
+  <body></body>
+  <strict>
+  // Node 22 support
+  //Currying is a powerful concept that allows you to break down functions into smaller, reusable units. It's especially useful for handling configuration, reducing redundancy, and building more declarative logic in your code.
+  //You can apply currying to a wide variety of tasks such as logging, validation, API requests, price calculations, and more
+
+  function calculateVolume(length) {
+    return function (breadth) {
+        return function (height) {
+            return length * breadth * height;
+        }
+    }
+}
+console.log(calculateVolume(4)(5)(6));
+  
+</strict>
+</html>
