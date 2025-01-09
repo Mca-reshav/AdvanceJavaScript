@@ -1,0 +1,149 @@
+The utils module in Node.js is a utility library that provides functions and classes for common tasks such as formatting, debugging, and inspecting objects. It is especially helpful when working with asynchronous programming, custom errors, and debugging.
+
+To use the utils module, you need to import it as follows:
+
+javascript
+Copy code
+const util = require('util');
+Here are some commonly used utilities from the utils library:
+
+1. util.promisify
+Converts a callback-based function into a Promise-based one, enabling the use of async/await.
+
+Example:
+
+javascript
+Copy code
+const fs = require('fs');
+const util = require('util');
+
+const readFile = util.promisify(fs.readFile);
+
+(async () => {
+  try {
+    const data = await readFile('example.txt', 'utf-8');
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+})();
+2. util.callbackify
+Converts a Promise-based function into a callback-based one.
+
+Example:
+
+javascript
+Copy code
+const util = require('util');
+
+async function asyncFunction() {
+  return 'Hello, Callback!';
+}
+
+const callbackFunction = util.callbackify(asyncFunction);
+
+callbackFunction((err, result) => {
+  if (err) throw err;
+  console.log(result); // Hello, Callback!
+});
+3. util.format
+Formats strings similar to printf in C.
+
+Example:
+
+javascript
+Copy code
+const util = require('util');
+
+const message = util.format('Hello %s, you have %d new messages', 'Alice', 5);
+console.log(message); // Hello Alice, you have 5 new messages
+4. util.inspect
+Returns a string representation of an object for debugging purposes.
+
+Example:
+
+javascript
+Copy code
+const util = require('util');
+
+const obj = { name: 'Alice', age: 25, nested: { key: 'value' } };
+console.log(util.inspect(obj, { showHidden: false, depth: null, colors: true }));
+5. util.deprecate
+Marks a function as deprecated, warning users when it is called.
+
+Example:
+
+javascript
+Copy code
+const util = require('util');
+
+const deprecatedFunction = util.deprecate(() => {
+  console.log('This function is deprecated');
+}, 'This function will be removed in future versions.');
+
+deprecatedFunction();
+6. util.types
+Provides methods to check the type of values.
+
+Example:
+
+javascript
+Copy code
+const util = require('util');
+
+console.log(util.types.isDate(new Date())); // true
+console.log(util.types.isRegExp(/regex/));  // true
+console.log(util.types.isMap(new Map()));  // true
+7. util.inherits
+Inherit the prototype methods of one constructor into another. Primarily used for working with traditional prototypal inheritance.
+
+Example:
+
+javascript
+Copy code
+const util = require('util');
+
+function Parent() {
+  this.name = 'Parent';
+}
+
+Parent.prototype.sayHello = function () {
+  console.log('Hello from Parent');
+};
+
+function Child() {
+  Parent.call(this);
+  this.name = 'Child';
+}
+
+util.inherits(Child, Parent);
+
+const child = new Child();
+child.sayHello(); // Hello from Parent
+8. util.TextDecoder and util.TextEncoder
+Encodes and decodes text.
+
+Example:
+
+javascript
+Copy code
+const { TextEncoder, TextDecoder } = require('util');
+
+const encoder = new TextEncoder();
+const encoded = encoder.encode('Hello, World!');
+
+const decoder = new TextDecoder();
+const decoded = decoder.decode(encoded);
+
+console.log(decoded); // Hello, World!
+9. util.log
+Logs messages with a timestamp. (Deprecated as of Node.js 10.0.0)
+
+Example:
+
+javascript
+Copy code
+const util = require('util');
+
+util.log('This is a timestamped message'); 
+// Output: 09 Jan 2025 12:34:56 - This is a timestamped message
